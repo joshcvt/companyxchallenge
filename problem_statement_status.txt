@@ -15,5 +15,6 @@ A REST controller with individual services for:
 
 ✅  User object includes ID, first name, and, last name
 ✅  Store user using the h2 embedded database.
-* Protect endpoints with Spring Security.
+✅  Protect endpoints with Spring Security
+    * set up "user/password" basic auth in application.properties. Would obviously want to reference a real auth store in a real app.
 ✅  Bonus: Appropriate HTTP status codes
