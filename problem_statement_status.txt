@@ -6,10 +6,10 @@ Requirements
 
 A REST controller with individual services for:
 
-✅ Adds a User to the list of stored users using a JSON request body. The request should be rejected if the same first name/last name combination is already stored in the system.
+✅  Adds a User to the list of stored users using a JSON request body. The request should be rejected if the same first name/last name combination is already stored in the system.
 	* returns HTTP 409 Conflict if FN/LN conflict, case insensitive
-✅ Returns a single User when requested by ID as JSON
-* Returns a list of all Users as JSON, ordered alphabetically by last name
+✅  Returns a single User when requested by ID as JSON
+✅  Returns a list of all Users as JSON, ordered alphabetically by last name
 ✅  Deletes a User when requested by ID
 	* returns HTTP 417 Expectation Failed if ID not found/invalid
 
