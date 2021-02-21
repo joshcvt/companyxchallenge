@@ -5,6 +5,8 @@ import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.EmptyResultDataAccessException;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.domain.Sort.TypedSort;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
@@ -25,9 +27,13 @@ public class CompanyxchallengeController {
 
     @GetMapping
     public List<User> findAllUsers() {
-        return userRepository.findAll();
-        //return userRepository.findAllOrderByLastnameFirstname();
+        
+        TypedSort<User> userTS = Sort.sort(User.class);
+        Sort sort = userTS.by(User::getLastName).ascending().and(userTS.by(User::getFirstName).ascending());
+        //return userRepository.findAll();
+        return userRepository.findAll(sort);
     }
+
 
     @GetMapping("/{id}")
     public ResponseEntity<User> findUserById(@PathVariable(value="id") long id) {
