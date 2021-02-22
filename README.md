@@ -14,7 +14,7 @@ Things completed:
  If ID doesn't exist, returns HTTP 204 No Content
 * Return list of users, alphabetical by lastname then firstname, case insensitive: GET http://localhost:8080/api/user/
 * Add User to table: POST ```{"firstName":"John","lastName":"Doe"}``` to http://localhost:8080/api/user/save  
- Successful save returns HTTP 200, user object with ```id``` element  
+ Successful save returns HTTP 200, body user object with ```id``` element  
  If firstName/lastName pair is already in table, case insensitive comparison, returns HTTP 409 Conflict with User object containing ```"id":"null"```
 * Delete User by ID: GET http://localhost:8080/api/user/delete/{id}  
  Successful delete returns HTTP 200, ID as body  
