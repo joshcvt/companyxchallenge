@@ -1,12 +1,13 @@
 package org.behindthenet.companyxchallenge;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.data.domain.Sort;
-import org.springframework.data.domain.Sort.TypedSort;
+import org.springframework.data.domain.Sort.Order;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
@@ -28,10 +29,10 @@ public class CompanyxchallengeController {
     @GetMapping
     public List<User> findAllUsers() {
         
-        //TypedSort<User> userTS = Sort.sort(User.class);
-        //Sort sort = userTS.by(User::getLastName).ascending().and(userTS.by(User::getFirstName).ascending());
-        Sort sort = Sort.by(new Sort.Order(Sort.DEFAULT_DIRECTION,"lastName").ignoreCase());
-        //return userRepository.findAll();
+        List<Order> orders = new ArrayList<Order>();
+        orders.add(new Sort.Order(Sort.DEFAULT_DIRECTION,"lastName").ignoreCase());
+        orders.add(new Sort.Order(Sort.DEFAULT_DIRECTION,"firstName").ignoreCase());
+        Sort sort = Sort.by(orders);
         return userRepository.findAll(sort);
     }
 
