@@ -2,8 +2,10 @@ package org.behindthenet.companyxchallenge.config;
 
 import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 
+@EnableWebSecurity
 public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
     
     // for demo, setting up user/pass in application.properties. In a real application you'd have a
@@ -11,15 +13,14 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
     
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-
         http
-            .httpBasic()
-            .and()
-            .authorizeRequests()
-            .antMatchers(HttpMethod.GET,"/api/user/**").hasRole("ROLE_USER")
-            .antMatchers(HttpMethod.POST,"/api/user/**").hasRole("ROLE_USER")
-            .and()
+            .httpBasic().and()
             .csrf().disable()
-            .formLogin().disable();
+            .authorizeRequests()
+            .antMatchers("/").permitAll()
+            .antMatchers(HttpMethod.GET,"/api/user/**").authenticated()
+            .antMatchers(HttpMethod.POST,"/api/user/**").authenticated()
+            .anyRequest().authenticated();
     }
+
 }
