@@ -28,8 +28,9 @@ public class CompanyxchallengeController {
     @GetMapping
     public List<User> findAllUsers() {
         
-        TypedSort<User> userTS = Sort.sort(User.class);
-        Sort sort = userTS.by(User::getLastName).ascending().and(userTS.by(User::getFirstName).ascending());
+        //TypedSort<User> userTS = Sort.sort(User.class);
+        //Sort sort = userTS.by(User::getLastName).ascending().and(userTS.by(User::getFirstName).ascending());
+        Sort sort = Sort.by(new Sort.Order(Sort.DEFAULT_DIRECTION,"lastName").ignoreCase());
         //return userRepository.findAll();
         return userRepository.findAll(sort);
     }
