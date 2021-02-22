@@ -6,6 +6,25 @@
 	},
 	"item": [
 		{
+			"name": "Get root",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
 			"name": "Get UID 345",
 			"request": {
 				"method": "GET",
@@ -92,7 +111,7 @@
 			"response": []
 		},
 		{
-			"name": "add jill jones",
+			"name": "add jill jones unauth",
 			"request": {
 				"method": "POST",
 				"header": [],
@@ -122,7 +141,37 @@
 			"response": []
 		},
 		{
-			"name": "add e e cummings",
+			"name": "add Jeff jones unauth",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"firstName\":\"Jeff\",\"lastName\":\"jones\"}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/user/save",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"user",
+						"save"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "add e e cummings authorized",
 			"request": {
 				"method": "POST",
 				"header": [],
@@ -184,6 +233,42 @@
 		{
 			"name": "get all users",
 			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/user/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"user",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get all users with user/password",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "password",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "user",
+							"type": "string"
+						}
+					]
+				},
 				"method": "GET",
 				"header": [],
 				"url": {
